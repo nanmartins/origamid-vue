@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Vue.JS - Exercicio 04</title>
+</head>
+<body>
+
+  <style>
+    .verde {
+      color: green;
+    }
+
+    .vermelho {
+      color: red;
+    }
+  </style>
+
+  <div id="app">
+    <button @click="callApis">Ver stocks</button>
+    <div>
+      <h2 v-bind:class="appleCap > googleCap ? 'verde' : 'vermelho'">{{appleName}}</h2>
+      <p>{{appleCap}}</p>
+    </div>
+    <hr>
+    <div>
+      <h2 v-bind:class="googleCap > appleCap ? 'verde' : 'vermelho'">{{googleName}}</h2>
+      <p>{{googleCap}}</p>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        appleName: '',
+        appleCap: '',
+        googleName: '',
+        googleCap: ''
+      },
+      methods: {
+
+        appleApi() {
+          fetch('https://api.origamid.dev/stock/aapl/quote')
+            .then(response => response.json())
+            .then(data => {
+              this.appleName = data.companyName
+              this.appleCap = data.marketCap
+            })
+        },
+
+        googleApi() {
+          fetch('https://api.origamid.dev/stock/googl/quote')
+            .then(response => response.json())
+            .then(data => {
+              this.googleName = data.companyName
+              this.googleCap = data.marketCap
+            })
+        },
+
+        callApis() {
+          this.appleApi()
+          this.googleApi()
+        },
+      }
+    })
+  </script>
+
+
+  <!-- APPLE -->
+  <!-- <div id="apple">
+    <button @click="api">Ver Apple</button>
+    <p>{{companyName}}</p>
+    <p>{{marketCap}}</p>
+  </div>
+
+  <script>
+    const apple = new Vue({
+      el: '#apple',
+      data: {
+        aapl: '',
+        companyName: '',
+        marketCap: ''
+      },
+      methods: {
+        api() {
+          fetch('https://api.origamid.dev/stock/aapl/quote')
+            .then(response => response.json())
+            .then(data => {
+              this.companyName = data.companyName
+              this.marketCap = data.marketCap
+            })
+        }
+      }
+    })
+  </script> -->
+
+
+  <!-- GOOGLE -->
+  <!-- <div id="google">
+    <button @click="api">Ver Google</button>
+    <p>{{companyName}}</p>
+    <p>{{marketCap}}</p>
+  </div>
+
+  <script>
+    const google = new Vue({
+      el: '#google',
+      data: {
+        googl: '',
+        companyName: '',
+        marketCap: ''
+      },
+      methods: {
+        api() {
+          fetch('https://api.origamid.dev/stock/googl/quote')
+            .then(response => response.json())
+            .then(data => {
+              this.companyName = data.companyName
+              this.marketCap = data.marketCap
+            })
+        }
+      }
+    })
+  </script> -->
+
+  <!-- esse link pode ajudar a resolver esse challenge: https://br.vuejs.org/v2/guide/reactivity.html -->
+
+</body>
+</html>

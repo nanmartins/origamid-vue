@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./vue.js"></script>
+  <title>Vue.JS - Exercicio 03</title>
+</head>
+<body>
+
+  <!-- Consumindo API -->
+  <div id="app">
+    <button @click="api">Ver Preco</button>
+    <p>{{result.latestPrice}}</p>
+    <p>{{result.latestTime}}</p>
+    <p>{{result.companyName}}</p>
+  </div>
+
+  <script>
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        result: ''
+      },
+      methods: {
+
+        // API Request
+        api() {
+          fetch('https://api.origamid.dev/stock/aapl/quote')
+            .then(response => response.json())
+            .then(data => this.result = data)
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
