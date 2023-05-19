@@ -11,8 +11,10 @@
 
   <div id="app">
 
-    <button @click="fetchApi">Buscar</button>
+    <!-- <button @click="fetchApi">Buscar</button> -->
+    {{fetchApi}}
 
+    <h3>Escolha um pais: </h3>
     <select name="paises" id="paises" v-model="paisSelecionado">
       <option v-for="(pais) in paises" :value="pais.name">
         {{ pais.name }}
@@ -40,7 +42,7 @@
         paisSelecionado: '',
         paisMatch: {},
       },
-      methods: {
+      computed: {
         fetchApi() {
           fetch('https://restcountries.com/v2/all/')
           .then(response => response.json())
