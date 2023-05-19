@@ -21,9 +21,12 @@
 
     <h1>{{ paisSelecionado }}</h1>
     <div v-if="paisSelecionado">
-      <p>Capital: {{ paisSelecionadoDetalhes.capital }}</p>
-      <p>Populacao: {{ paisSelecionadoDetalhes.population }}</p>
-      <img :src="paisSelecionadoDetalhes.flags.png" :alt="paisSelecionadoDetalhes.name">
+      <!-- <p>{{ paisMatch }}</p> -->
+      <p>Capital: {{ paisMatch.capital }}</p>
+      <p>Regiao: {{  paisMatch.subregion }}, {{ paisMatch.region }}</p>
+      <p v-for="(moeda) in paisMatch.currencies">Moeda: {{ moeda.symbol }}, {{ moeda.name }}</p>
+      <p>Populacao: {{ paisMatch.population }}</p>
+      <img :src="paisMatch.flags.png" :alt="paisMatch.name">
 
     </div>
 
@@ -42,11 +45,6 @@
           fetch('https://restcountries.com/v2/all/')
           .then(response => response.json())
           .then(data => this.paises = data)
-        }
-      },
-      computed: {
-        paisSelecionadoDetalhes() {
-          return this.paisMatch
         }
       },
       watch: {
