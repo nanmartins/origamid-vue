@@ -10,16 +10,22 @@
 <body>
 
   <div id="app">
-    <p>{{ fullName }}</p>
 
-    <button @click="fetchApi">Carregar</button>
+    <button @click="fetchApi">Buscar</button>
 
-    <hr>
-    <select name="paises" id="paises" v-model="select">
-      <option v-for="(pais) in paises" :value="pais.name" v-if="select ? 'ativo' : 'desativo'">
+    <select name="paises" id="paises" v-model="paisSelecionado">
+      <option v-for="(pais) in paises" :value="pais.name">
         {{ pais.name }}
       </option>
     </select>
+
+    <h1>{{ paisSelecionado }}</h1>
+    <div v-if="paisSelecionado">
+      <p>Capital: {{ paisSelecionadoDetalhes.capital }}</p>
+      <p>Populacao: {{ paisSelecionadoDetalhes.population }}</p>
+      <img :src="paisSelecionadoDetalhes.flags.png" :alt="paisSelecionadoDetalhes.name">
+
+    </div>
 
   </div>
 
@@ -27,32 +33,27 @@
     const vm = new Vue({
       el: '#app',
       data: {
-        nome: 'Renan',
-        sobrenome: 'Martins',
-        paises: '',
-        select: false
+        paises: [],
+        paisSelecionado: '',
+        paisMatch: {},
       },
       methods: {
         fetchApi() {
           fetch('https://restcountries.com/v2/all/')
           .then(response => response.json())
           .then(data => this.paises = data)
-          // console.log(data)
         }
       },
       computed: {
-        fullName() {
-          return this.nome + ' ' + this.sobrenome
-        },
+        paisSelecionadoDetalhes() {
+          return this.paisMatch
+        }
       },
-      // watch: {
-      //   paises() {
-      //     fetch('https://restcountries.com/v2/all/')
-      //     .then(response => response.json())
-      //     .then(data => this.paises = data)
-      //     console.log(data)
-      //   }
-      // }
+      watch: {
+        paisSelecionado() {
+          this.paisMatch = this.paises.find(pais => pais.name === this.paisSelecionado) || {}
+        }
+      }
     })
   </script>
 </body>
