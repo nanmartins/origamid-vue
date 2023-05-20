@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.js - Lifecycle Hooks</title>
+</head>
+<body>
+
+  <div id="app">
+    <input type="text" v-model.lazy="userName" @keydown.enter="fetchGithub">
+    {{ userName }}
+    <br>
+    <img :src="results.avatar_url" alt="">
+    <br><hr>
+    <button @click="contador++">{{ contador }}</button>
+    <button @click="destruir">Destruir App</button>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        mensagem: 'Mensagem de data',
+        results: {},
+        contador: 0,
+        userName: 'origamid'
+      },
+      methods: {
+        fetchGithub() {
+          fetch(`https://api.github.com/users/${this.userName}`)
+          .then(response => response.json())
+          .then(data => {
+            return this.results = data
+          })
+        },
+        destruir() {
+          // Destroi todos os components dentro do elemento(el: #app)
+          this.$destroy()
+        }
+      },
+      beforeCreate() {
+        // console.log(this.mensagem + ' beforeCreate' + this.$el)
+        // Nessa parte nada foi criado, nenhum dos componentes existe ainda
+      },
+      created() {
+        // this.fetchGithub()
+        // console.log(this.mensagem + ' created()'  + this.$el)
+        // this.$el ainda nao foi criado nessa etapa
+      },
+      beforeMount() {
+        // this.fetchGithub()
+        // console.log(this.mensagem + ' beforeMount()' + this.$el)
+        // this.$el ja esta criado porem com os components vue, por ex: {{ name }}
+      },
+      mounted() {
+        // this.fetchGithub()
+        // console.log(this.mensagem + ' mounted()' + this.$el)
+        // this.$el foi criado e ja esta povoado com os valores dos components vue
+      },
+      beforeUpdate() {
+        // this.fetchGithub()
+        // console.log('test beforeUpdate()')
+      },
+      updated() {
+        // console.log('test updated()')
+      },
+      beforeDestroy() {
+        // console.log('before destroy')
+      },
+      destroyed() {
+        // console.log('destruido')
+      }
+    })
+  </script>
+</body>
+</html>

@@ -10,14 +10,34 @@
 <body>
 
   <div id="app">
+    <div style="height: 200vh;">
+      <input @click.shift="ativar" type="text">
+      <p style="position: fixed; top: 50px;">Press Enter(scroll position): {{ totalScroll }}</p>
 
+    </div>
   </div>
 
   <script>
     const vm = new Vue({
       el: '#app',
       data: {
+        totalScroll: 0
+      },
+      methods: {
+        ativar() {
+          console.log('ativou!')
+        },
 
+        handleScroll(event) {
+          console.log(event.key)
+          if (event.key === 'Enter') {
+            this.totalScroll = window.scrollY
+          }
+        }
+      },
+      created() {
+        // Global event, fora do alcance da diretiva
+        window.addEventListener('keyup', this.handleScroll)
       }
     })
   </script>
