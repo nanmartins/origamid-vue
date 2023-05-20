@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS</title>
+</head>
+<body>
+
+  <div id="app">
+    <h1>{{titulo}}</h1>
+    <div v-if="comprou" :style="{background: cor}"> <!-- omitindo o v-bind: -->
+      <p>{{conteudo}}</p>
+      <p>{{lado * lado - lado / 100}}</p>
+      <p>{{comprou? 'Sim' : 'Nao, compre aqui'}}</p>
+      <input v-model="cor" type="color">
+      {{cor}}
+    </div>
+    <a v-bind:href="href" target="_blank">{{href}}</a> <!-- usando v-bind:-->
+  </div>
+
+  <script>
+
+    new Vue({
+      el: '#app',
+      data: {
+        titulo: 'Curso de JavaScript',
+        conteudo: "Esse e o conteudo",
+        lado: 5,
+        comprou: true,
+        href: 'https://vuejs.org/',
+        cor: '#05e2e6'
+      }
+    })
+
+  </script>
+
+</body>
+</html>

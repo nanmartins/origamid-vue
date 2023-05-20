@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS - v-for</title>
+</head>
+<body>
+
+  <div id="app">
+      <ul>
+        <li v-for="(fruta, index) in frutas">{{fruta}}, {{index}}</li>
+      </ul>
+
+      <hr>
+
+      <ul>
+        <li v-for="(estado, key, index) in estados">
+          <p>{{estado.nome}} - {{key}}</p>
+          <p>{{estado.pop}}</p>
+        </li>
+      </ul>
+
+      <hr>
+
+      <!-- Elementos desconstruidos  -->
+      <ul>
+        <li v-for="({nome, pop}, key, index) in estados" :key="key + nome">
+          <p>{{nome}} - {{key}}</p>
+          <p>{{pop}}</p>
+        </li>
+      </ul>
+
+      <hr>
+
+      <!-- n in 10 -->
+      <div v-for="n in 5">{{n}}</div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        frutas: ['Banana', 'Uva', 'Laranja', 'Melancia'],
+        estados: {
+          sp: {
+            pop: '45 milhoes',
+            nome: 'Sao Paulo'
+          },
+          mg: {
+            pop: '21 milhores',
+            nome: 'Minas Gerais'
+          },
+          rj: {
+            pop: '17 milhores',
+            nome: 'Rio de Janeiro'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

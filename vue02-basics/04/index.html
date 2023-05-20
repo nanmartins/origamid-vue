@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS - Instancia</title>
+</head>
+<body>
+
+  <div id="app">
+    {{nomeCompleto}}
+  </div>
+
+  <script>
+
+    // JS object para representar o funcionamento do Vue
+    function VueClone(options) {
+      this.options = options
+      this.el = document.querySelector(options.el)
+      this.data = options.data
+    }
+
+    const vmClone = new VueClone({
+      el: '#app',
+      data: {
+        nome: 'Jose',
+      }
+    })
+
+    console.log(vmClone)
+
+    // Usando new Vue elemento para recriar o codigo acima
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        nome: 'Joao',
+        sobrenome: 'Maria'
+      },
+      computed: {
+        nomeCompleto() {
+          //usar arrow function permite usar o elemento pai como "this" dentro da funcao
+          setTimeout(() => {
+            console.log('this  do timeout: ', this.nome)
+          }, 1000);
+          return this.nome + ' ' + this.sobrenome
+        }
+      }
+    })
+
+    console.log(vm)
+
+  </script>
+
+</body>
+</html>

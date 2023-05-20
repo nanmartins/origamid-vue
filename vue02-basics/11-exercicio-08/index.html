@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS - Exercicio 08</title>
+</head>
+<body>
+
+  <div id="app">
+    <div v-for="(dado, key) in dados" v-if="isItemVisible(key)">
+      {{ key }}: {{ dado }}
+    </div>
+
+    <hr>
+
+    <div v-for="(estudo) in estudos">
+      <h1>{{ estudo.curso }}</h1>
+      <a :href="estudo.link">Ir para site</a>
+      <h3>Materias: </h3>
+      <ul>
+        <li v-for="{nome, tempo} in estudo.aulas">{{ nome }}, {{ tempo }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        dados: '',
+        estudos: ''
+      },
+      created() {
+        fetch('https://viacep.com.br/ws/04538133/json/')
+          .then(response => response.json())
+          .then(data => this.dados = data)
+
+        const url = "./cursos.json"
+        fetch(url)
+        .then(response => response.json())
+        .then(data => this.estudos = data)
+      },
+      methods: {
+        isItemVisible(key) {
+          // Lista dos itens que deseja renderizar
+          const visibleItems = ['logradouro', 'complemento', 'bairro', 'cep', 'localidade', 'uf']
+
+          // Verificar se o item atual está na lista de itens visíveis
+          return visibleItems.includes(key)
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
+
+
+
+
+<!--
+  Utilizando a api:
+  https://viacep.com.br/ws/04538133/json/
+  Mostre o cep, logradouro, complemento, bairro, localidade e uf do que for retornado.
+
+
+  Use o arquivo json da aula, para listar os cursos e as matérias.
+-->

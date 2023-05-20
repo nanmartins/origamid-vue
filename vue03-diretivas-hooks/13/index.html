@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS - Class & Style</title>
+</head>
+<body>
+
+  <div id="app">
+    <h2 :class="[color[0], bgColor[0], {hide: ativo}]">teste de class e style</h2>
+    <button @click="ativo =!ativo">{{ativo? 'Esconder' : 'Mostrar'}}</button>
+    <button @click="tamanho++" :style="estiloAddBtn" v-if="ativo">+</button>
+    <button @click="tamanho--" :style="estiloDelBtn" v-if="ativo">-</button>
+    <p :class="[color[1], bgColor[1], {hide: !ativo}]" :style="{fontSize: tamanho + 'px'}">texto escondido</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        ativo: false,
+        color: ['yellow', 'white'],
+        bgColor: ['blue', 'black'],
+        tamanho: 15,
+        estiloAddBtn: {
+          background: "green",
+          borderRadius: "10px",
+          color: "white",
+          fontWeight: "bold"
+        },
+        estiloDelBtn: {
+          background: "tomato",
+          borderRadius: "10px",
+          color: "white",
+          fontWeight: "bold"
+        }
+      }
+    })
+  </script>
+
+  <style>
+    .hide {
+      display: none;
+    }
+    .blue {
+      background-color: blue;
+    }
+    .yellow {
+      color: yellow;
+    }
+    .black {
+      background-color: black;
+    }
+    .white {
+      color: white;
+    }
+  </style>
+</body>
+</html>

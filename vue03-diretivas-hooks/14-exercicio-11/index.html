@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS - Exercicio 11</title>
+</head>
+<body>
+
+  <div id="app">
+    <label for="width">Width: </label>
+    <input type="text" v-model.trim="btn.width">
+    <br>
+    <label for="height">Height: </label>
+    <input type="text" v-model.trim="btn.height">
+    <br>
+    <label for="fontSize">Font-size: </label>
+    <input type="text" v-model.trim="btn.fontSize">
+    <br>
+    <label for="fontFamily">Font-fmaily: </label>
+    <input type="text" v-model="btn.fontFamily">
+    <br>
+    <label for="textAlign">Text-align: </label>
+    <input type="text" v-model="btn.textAlign">
+    <br>
+    <label for="borderRadius">Border-radius: </label>
+    <input type="text" v-model="btn.borderRadius">
+    <br>
+    <label for="background">Background-color: </label>
+    <input type="color" v-model="btn.background">
+    <br>
+    <label for="color">Color: </label>
+    <input type="color" v-model="btn.color">
+    <br>
+
+    <button :style="{
+      width: btn.width + 'px',
+      height: btn.height + 'px',
+      fontSize: btn.fontSize + 'px',
+      fontFamily: btn.fontFamily,
+      textAlign: btn.textAlign,
+      borderRadius: btn.borderRadius + 'px',
+      background: btn.background,
+      color: btn.color }">
+      My button
+    </button>
+
+    <hr>
+
+    <form @submit.prevent="submitForm">
+      <label for="name">Name: </label>
+      <input type="text" v-model.lazy="name">
+      <br>
+      <label for="email">Email: </label>
+      <input type="text" v-model="email">
+      <br>
+      <label for="phone">Phone: </label>
+      <input type="text" v-model.number="phone">
+      <br>
+      <label for="message">Message: </label>
+      <textarea v-model="message"></textarea>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+    <ul>
+      <li v-for="(result, key) in results">
+        {{ key }}: {{ result }}
+      </li>
+    </ul>
+
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        results: {},
+        btn: {
+          width: '',
+          height: '',
+          fontSize: '',
+          fontFamily: '',
+          textAlign: '',
+          borderRadius: '',
+          background: '#ffffff',
+          color: '#000000',
+        }
+      },
+      methods: {
+        submitForm() {
+          this.results = {
+            name: this.name,
+            email: this.email,
+            phone: this.phone,
+            message: this.message
+          }
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
+
+
+<!--
+  1 - Crie um criador de botões.
+
+  O usuário poderá definir:
+  width,
+  height,
+  font-size,
+  font-family,
+  text-align,
+  background,
+  color,
+  border-radius,
+
+  As escolhas serão feitas em campos de
+  formulário. Cada escolha deverá ser
+  refletida em um elemento (o botão).
+
+
+  2 - Crie um formulário com, nome, email, telefone e mensagem.
+  Ao clicar em enviar, as informações preenchidas no formulário
+  devem aparecer abaixo do mesmo. (previna o comportamento padrão do botão enviar)
+ -->
