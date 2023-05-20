@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="./vue.js"></script>
+  <script src="../vue.js"></script>
   <title>Vue.JS - Exercicio 09</title>
 </head>
 <body>
@@ -14,7 +14,7 @@
     <!-- <button @click="fetchApi">Buscar</button> -->
     {{fetchApi}}
 
-    <h3>Escolha um pais: </h3>
+    <h3>Choose a country: </h3>
     <select name="paises" id="paises" v-model="paisSelecionado">
       <option v-for="(pais) in paises" :value="pais.name">
         {{ pais.name }}
@@ -25,9 +25,9 @@
     <div v-if="paisSelecionado">
       <!-- <p>{{ paisMatch }}</p> -->
       <p>Capital: {{ paisMatch.capital }}</p>
-      <p>Regiao: {{  paisMatch.subregion }}, {{ paisMatch.region }}</p>
-      <p v-for="(moeda) in paisMatch.currencies">Moeda: {{ moeda.symbol }}, {{ moeda.name }}</p>
-      <p>Populacao: {{ paisMatch.population }}</p>
+      <p>Region: {{  paisMatch.subregion }}, {{ paisMatch.region }}</p>
+      <p v-for="(moeda) in paisMatch.currencies">Coin: {{ moeda.symbol }}, {{ moeda.name }}</p>
+      <p>Population: {{ paisMatch.population }}</p>
       <img :src="paisMatch.flags.png" :alt="paisMatch.name">
 
     </div>
