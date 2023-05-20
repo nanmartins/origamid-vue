@@ -10,8 +10,9 @@
 <body>
 
   <div id="app">
-    <input type="text" v-model.lazy="userName" @keydown.enter="fetchGithub">
-    {{ userName }}
+    <label for="userName">Github user: </label>
+    <input type="text" v-model.lazy="userName" @keyup.enter="fetchGithub">
+    <!-- {{ userName }} -->
     <br>
     <img :src="results.avatar_url" alt="">
     <br><hr>
@@ -26,15 +27,14 @@
         mensagem: 'Mensagem de data',
         results: {},
         contador: 0,
-        userName: 'origamid'
+        userName: ''
       },
       methods: {
         fetchGithub() {
-          fetch(`https://api.github.com/users/${this.userName}`)
+          const user = this.userName
+          fetch(`https://api.github.com/users/${user}`)
           .then(response => response.json())
-          .then(data => {
-            return this.results = data
-          })
+          .then(data => this.results = data)
         },
         destruir() {
           // Destroi todos os components dentro do elemento(el: #app)
