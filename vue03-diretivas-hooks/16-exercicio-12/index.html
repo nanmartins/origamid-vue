@@ -11,16 +11,56 @@
 
   <div id="app">
 
+    <button @click="contador++">Adicionar +</button>
+    {{ contador }}
+
+    <hr>
+
+    <ul>
+      <li v-for="(value, key) in api">{{ key }}: {{ value }}</li>
+    </ul>
   </div>
 
   <script>
     const vm = new Vue({
       el: '#app',
       data: {
-
+        contador: 0,
+        api: {},
+      },
+      methods: {
+        fetchApi() {
+          fetch('https://api.github.com/users/nanmartins')
+          .then(response => response.json())
+          .then(data => this.api = data)
+        }
+      },
+      created() {
+        this.fetchApi()
+      },
+      updated() {
+        document.title = this.contador
       }
     })
   </script>
 
 </body>
 </html>
+
+
+
+<!-- Utilize a api do github para
+mostrar todos os seus dados na tela.
+Faça o fetch das informações utilizando
+um dos hooks do vue:
+
+https://api.github.com/users/origamid (utilize o seu usuário)
+ -->
+
+<!--
+  Crie um contador, onde seja possível clicar em
+  um botão e adicionar +1 ao número.
+
+  Toda vez que o contador mudar, mude o título da página
+  para o total do contador. Utilize um hook para isso
+ -->
