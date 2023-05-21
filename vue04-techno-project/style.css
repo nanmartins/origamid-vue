@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
 
 
-body, h1, h2, ul, li, p {
+body, h1, h2, h4, ul, li, p {
   padding: 0;
   margin: 0;
+}
+
+html {
+  font-family: 'Noto Serif', serif;
 }
 
 
@@ -23,6 +27,34 @@ body {
 #app {
   padding: 0 80px;
 }
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 90px;
+}
+
+.carrinho_menu::after {
+  content: '';
+  display: inline-block;
+  background: url('./assets/carrinho.svg') no-repeat center center;
+  width: 25px;
+  height: 25px;
+  /* margin-left: 10px; */
+}
+
+.carrinho_menu {
+  display: flex;
+  align-items: center;
+}
+
 
 /* LISTA DE PRODUTOS */
 
@@ -132,6 +164,11 @@ body {
   font-size: 3rem;
 }
 
+/* .modal_outstock {
+  margin-top: 50px;
+  color: #1a1a1a;
+} */
+
 .modal_btn {
   margin-top: 80px;
   background: #000;
@@ -143,8 +180,12 @@ body {
   font-family: 'Noto Serif', serif;
 }
 
+.modal_btn.esgotado {
+  background: #707070;
+}
+
 .modal_btn:active {
-  background: #808080;
+  background: #707070;
 }
 
 
@@ -169,4 +210,26 @@ body {
 
 .review_user {
   font-weight: bold;
+}
+
+
+
+/* 2560px width monitor config */
+@media only screen and (min-width: 2000px) {
+
+  .header {
+    max-width: 1200px;
+  }
+
+  .logo {
+    width: 110px;
+  }
+
+  .produtos {
+    max-width: 1200px;
+  }
+
+  .produto_img {
+    max-width: 500px;
+  }
 }
