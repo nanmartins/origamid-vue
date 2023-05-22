@@ -16,16 +16,7 @@
     <!-- HEADER -->
     <header class="header">
       <image class="logo" src="./assets/techno.svg" alt="Techno" />
-      <div class="carrinho_menu">{{ carrinhoTotal | numeroPreco }} | {{ carrinho.length }}</div>
-
-
-
-      <ul>
-        <li v-for="(item, index) in carrinho">
-          <p>{{ item.nome }}</p>
-          <button @click="removerItem(index)">x</button>
-        </li>
-      </ul>
+      <div class="carrinho_menu" @click="carrinhoAtivo = !carrinhoAtivo">{{ carrinhoTotal | numeroPreco }} | {{ carrinho.length }}</div>
     </header>
 
 
@@ -74,6 +65,36 @@
         </div>
       </div>
     </section>
+
+
+    <!-- CARRINHO -->
+    <section class="carrinho_modal" :class="{ ativo: carrinhoAtivo}" @click="clickForaCarrinho">
+      <div class="carrinho_container">
+        <button class="carrinho_fechar" @click="carrinhoAtivo = !carrinhoAtivo">X</button>
+        <h2 class="carrinho_titulo">Carrinho</h2>
+
+        <div v-if="carrinho.length > 0">
+          <ul class="carrinho_lista">
+            <li class="carrinho_item" v-for="(item, index) in carrinho">
+              <p>{{ item.nome }}</p>
+              <p class="carrinho_preco">{{ item.preco | numeroPreco }}</p>
+              <button class="carrinho_remover" @click="removerItem(index)">x</button>
+            </li>
+          </ul>
+
+          <p class="carrinho_total">Total: {{ carrinhoTotal | numeroPreco }}</p>
+          <button class="carrinho_btn">Finalizar Compra</button>
+        </div>
+
+        <!-- carrinho vazio -->
+        <p v-else style="margin-top: 15px;">Nenhum item para mostrar</p>
+      </div>
+    </section>
+
+    <!-- ALERTA -->
+    <div class="alerta" :class="{ ativo: alertaAtivo}">
+      <p class="alerta_mensagem">{{ mensagemAlerta }}</p>
+    </div>
   </div>
 
   <script src="./app.js"></script>
