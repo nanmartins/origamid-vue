@@ -134,6 +134,7 @@ body {
   position: absolute;
   top: -10px;
   right: -10px;
+  color: #000;
   font-size: 1rem;
   font-weight: bold;
   border: 2px solid #000;
@@ -329,6 +330,7 @@ body {
   position: absolute;
   top: -10px;
   right: -10px;
+  color: #000;
   font-size: 1rem;
   font-weight: bold;
   border: 2px solid #000;
@@ -385,6 +387,11 @@ body {
     margin: 10px auto;
   }
 
+  .modal_fechar {
+    top: -5px;
+    right: -5px;
+  }
+
   .modal_img {
     grid-row: 2;
   }
@@ -414,6 +421,11 @@ body {
 
   .carrinho_modal {
     padding: 10px;
+  }
+
+  .carrinho_fechar {
+    top: -5px;
+    right: -5px;
   }
 
 }
