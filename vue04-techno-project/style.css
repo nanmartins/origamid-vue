@@ -20,8 +20,7 @@ ul {
 }
 
 body {
-  background: linear-gradient(to right, #1a1a1a 35%, #ffffff 30%);
-  /* font-family: 'Noto Serif', serif; */
+  background: linear-gradient(to right, #1a1a1a 45%, #eaeaea 40%);
 }
 
 #app {
@@ -58,7 +57,6 @@ body {
 
 
 /* LISTA DE PRODUTOS */
-
 .produtos {
   max-width: 900px;
   margin: 100px auto 0 auto;
@@ -68,7 +66,7 @@ body {
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-  background: #ffffff;
+  background: #fcfcfc;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
@@ -269,6 +267,7 @@ body {
   padding: 20px;
   display: none;
 }
+
 .carrinho_modal.ativo {
   display: block;
 }
@@ -276,7 +275,7 @@ body {
 .carrinho_container {
   position: relative;
   margin: 80px auto;
-  background: #ffffff;
+  background: #fcfcfc;
   padding: 40px;
   max-width: 800px;
   animation: fadeInDown .4s forwards;
@@ -339,6 +338,85 @@ body {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15), 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
+
+/* RESPONSIVIDADE */
+
+@media screen and (max-width: 900px) {
+
+  #app {
+    padding: 0 10px;
+  }
+
+  .logo {
+    padding-left: 5px;
+  }
+
+  .produtos {
+    margin-top: 40px;
+  }
+
+  .produto {
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 300px;
+    margin: 30px auto;
+  }
+
+  .produto_info {
+    padding: 20px;
+  }
+  .produto_img {
+    max-width: 100%;
+  }
+
+  .produto_titulo {
+    font-size: 1.5rem;
+  }
+
+  /* Modal */
+  .modal {
+    padding: 10px;
+  }
+
+  .modal_container {
+    gap: 20px;
+    background: #ffffff;
+    padding: 10px 0;
+    margin: 10px auto;
+  }
+
+  .modal_img {
+    grid-row: 2;
+  }
+
+  .modal img {
+    width: 100%;
+    max-width: initial;
+  }
+
+  .modal_preco {
+    font-size: 1.2rem;
+  }
+
+  .modal_btn {
+    margin-top: 20px;
+  }
+
+  .modal_dados {
+    grid-column: 1;
+    padding: 15px;
+  }
+
+  .reviews {
+    grid-column: 1;
+    padding: 15px;
+  }
+
+  .carrinho_modal {
+    padding: 10px;
+  }
+
+}
 
 /* 2560px width monitor config */
 @media only screen and (min-width: 2000px) {
