@@ -16,7 +16,7 @@ export default {
     fetchApi() {
       fetch('https://api.origamid.dev/exchange/usd')
       .then(response => response.json())
-      .then(data => this.results = data.rates.BRL)
+      .then(data => this.results = data.rates.BRL.toFixed(2))
     }
   },
   created() {

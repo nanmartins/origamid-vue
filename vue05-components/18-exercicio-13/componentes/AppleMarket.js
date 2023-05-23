@@ -2,13 +2,13 @@ import DolarReal from './DolarReal.js'
 
 export default {
   name: 'AppleMarket',
+  components: {
+    DolarReal
+  },
   data() {
     return {
       results: ''
     }
-  },
-  components: {
-    DolarReal
   },
   template: `
     <div>
