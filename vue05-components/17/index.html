@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS - Componentes</title>
+</head>
+<body>
+  <div id="app">
+    {{ mensagem }}
+    <botao-contador></botao-contador>
+    <hr>
+    <!-- <componente-global></componente-global> -->
+    <componente-local></componente-local>
+    <!-- <componente-local-var></componente-local-var> -->
+  </div>
+
+
+  <script>
+
+    // CRIANDO VARIAVEIS COM COMPONENTES
+    const ComponenteLocalVar = {
+      name: 'ComponenteLocalVar',
+      data() {
+        return {
+          ativo: true
+        }
+      },
+      template: `<div v-if="ativo">
+                  <p>Componente Local de variavel</p>
+                  <button @click="ativo = !ativo">fechar</button>
+                </div>`
+    }
+
+    // Componete basico
+    Vue.component('BotaoContador', {
+      data() {
+        return {
+          total: 0
+        }
+      },
+      methods: {
+        ativar() {
+          this.total++
+        }
+      },
+      template: `<div>
+                  <button @click="ativar">Contar: {{this.total}}</button>
+                </div>`
+    })
+
+
+    // COMPONENTE GLOBAL
+    Vue.component('ComponenteGlobal', {
+      template: `<p>COMPONENTE GLOBAL</p>`
+    })
+
+
+    // REGISTRANDO UM COMPONENTE LOCAL PARA GLOBAL
+    Vue.component('ComponenteLocalVar', ComponenteLocalVar)
+
+    const vm = new Vue({
+      el: '#app',
+      // COMPONENTES LOCAIS
+      components: {
+        //Componente local 1
+        ComponenteLocal: {
+          name: 'ComponenteLocal',
+          template: `<div>
+                      <p>COMPONENTE LOCAL</p>
+                      <componente-local-var></componente-local-var>
+                      <componente-global></componente-global>
+                    </div>`
+        },
+        // Componente local 2(variavel)
+        ComponenteLocalVar: ComponenteLocalVar
+      },
+      data: {
+        mensagem: 'Isso'
+      },
+    })
+  </script>
+
+</body>
+</html>
