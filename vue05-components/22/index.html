@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.js - Events</title>
+</head>
+<body>
+
+  <div id="app">
+    <h4>{{ mensagem }}</h4>
+    <hr>
+    <p>Total de clientes: {{ totalClientes }}</p>
+    <meu-botao @meu-evento="mostrarMensagem"></meu-botao>
+  </div>
+
+  <script type="module">
+
+    const MeuBotao = {
+      name: 'MeuBotao',
+      data() {
+        return {
+          totalClientes: 200
+        }
+      },
+      template: `<button @click='handleClick'>Clique</button>`,
+      methods: {
+        handleClick() {
+          // this.$emit('meu-evento')
+          this.$emit("meu-evento",  this.totalClientes)
+        },
+      },
+      created() {
+        setTimeout(() => {
+          // this.$emit("meu-evento",  this.totalClientes)
+        }, 2000)
+      }
+    }
+
+
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        mensagem: '',
+        totalClientes: 0
+      },
+      components: {
+        MeuBotao
+      },
+      methods: {
+        mostrarMensagem(mensagem) {
+          console.log(mensagem)
+          // console.log('metodo ativo')
+          this.totalClientes = mensagem
+
+          console.log(this.mensagem = 'hello')
+          // this.mensagem = 'mostrarMensagem method'
+          // console.log(this.mensagem)
+        }
+      }
+    })
+  </script>
+</body>
+</html>

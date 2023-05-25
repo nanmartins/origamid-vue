@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="/vue.js"></script>
+  <title>Vue.JS - Exercicio 14</title>
+</head>
+<body>
+
+  <div id="app">
+    <input-form></input-form>
+  </div>
+
+  <script type="module">
+
+
+    const ResultadoApi = {
+      name: 'ResultadoApi',
+      props: ['results'],
+      template: `
+        <div>
+          <p v-for="(result, key) in results">{{ key }}: {{ result }}</p>
+        </div>
+      `,
+    }
+
+    const InputForm = {
+      name: 'InputForm',
+      components: {
+        ResultadoApi
+      },
+      data() {
+        return {
+          empresa: '',
+          results: ''
+        }
+      },
+      template: `
+        <div>
+          <label for="empresa">Escolha uma companhia: </label>
+          <input type="text" v-model="empresa" />
+          <button @click="fetchApi(empresa)">Submit</button>
+          <hr>
+          <resultado-api :results="results"></resultado-api>
+        </div>
+      `,
+      methods: {
+        fetchApi(cia) {
+          fetch(`https://api.origamid.dev/stock/${cia}/quote`)
+          .then(response => response.json())
+          .then(data => this.results = data)
+        }
+      }
+    }
+
+
+    const vm = new Vue({
+      el: '#app',
+      components: {
+        InputForm,
+        ResultadoApi
+      }
+    })
+
+  </script>
+</body>
+</html>
+
+
+<!--
+  Crie um componente com um campo de input e um botão para enviar o valor.
+  Nesse campo de input será possível escrever o simbolo de empresas americanas
+
+  simbolos ex:
+  aapl -> Apple
+  goog -> Google
+  msft -> Microsoft
+  amzn -> Amazon
+  fb -> Facebook
+
+  Ao clicar no botão, faça um fetch com a API:
+  https://api.origamid.dev/stock/${SIMBOLO}/quote
+
+  O resultado do fetch deverá ser mostrado em um componente filho do formulário.
+  Envia as informações utilizando prop
+
+  Mostre todas as informações do fetch utilizando um loop.
+ -->
