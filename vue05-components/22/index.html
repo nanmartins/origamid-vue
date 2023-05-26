@@ -53,9 +53,11 @@
         mostrarMensagem(mensagem) {
           console.log(mensagem)
           // console.log('metodo ativo')
+          this.mensagem = "de mostrarMensagem method na instancia principal"
+
           this.totalClientes = mensagem
 
-          console.log(this.mensagem = 'hello')
+          // console.log(this.mensagem = 'hello')
           // this.mensagem = 'mostrarMensagem method'
           // console.log(this.mensagem)
         }

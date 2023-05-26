@@ -11,13 +11,64 @@
 
   <div id="app">
 
+    <componente-um></componente-um>
+    <componente-dois></componente-dois>
+
   </div>
+
 
   <script type="module">
 
 
+    //Controle de eventos
+    const EventBus = new Vue()
+
+    EventBus.$on("meu-evento", (event) => {
+      console.log(event + ': Evento ocorreu atraves do EventBus')
+    })
+
+
+    // Components
+    const ComponenteUm = {
+      name: 'ComponenteUm',
+      data() {
+        return {
+          mensagem: "Componente 01 mensagem"
+        }
+      },
+      methods: {
+        emitirEvento() {
+          EventBus.$emit("meu-evento", this.mensagem)
+        }
+      },
+      template: `<p @click="emitirEvento">Componente 01</p>`,
+    }
+
+
+    const ComponenteDois = {
+      name: 'ComponenteDois',
+      data() {
+        return {
+          mensagem: 'Componente 02'
+        }
+      },
+      template: `<p>{{ mensagem }}</p>`,
+      created() {
+        EventBus.$on("meu-evento", (event) => {
+          console.log(event + ': Componente 02 reagindo ao EventBus')
+          this.mensagem = event
+        })
+      }
+    }
+
+
+    // Main instancia
     const vm = new Vue({
-      el: '#app'
+      el: '#app',
+      components: {
+        ComponenteUm,
+        ComponenteDois
+      }
     })
   </script>
 </body>
