@@ -3,7 +3,7 @@
 <template>
 <div>
   <div id="app">{{ mensagem }}</div>
-  <HeaderPrincipal></HeaderPrincipal>
+  <HeaderPrincipal/>
 </div>
 </template>
 
