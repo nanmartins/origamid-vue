@@ -2,7 +2,18 @@
 
 <template>
   <div id="app">
-    <component :is="abaAtiva"></component>
+    <ul>
+      <li class='menu-links' @click="abaAtiva= 'SobreEmpresa'">Sobre</li>
+      <li class='menu-links' @click="abaAtiva= 'ServicosEmpresa'">Servicos</li>
+      <li class='menu-links' @click="abaAtiva= 'ContatoEmpresa'">Contato</li>
+    </ul>
+    <!-- <button @click="abaAtiva= 'SobreEmpresa'">Sobre</button>
+    <button @click="abaAtiva= 'ServicosEmpresa'">Servicos</button>
+    <button @click="abaAtiva= 'ContatoEmpresa'">Contato</button> -->
+    <hr>
+    <keep-alive>
+      <component :is="abaAtiva"></component>
+    </keep-alive>
   </div>
 </template>
 
@@ -30,7 +41,9 @@ export default {
 
 
 <style>
-
+  .menu-links {
+    cursor: pointer;
+  }
 </style>
 
 

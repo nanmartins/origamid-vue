@@ -3,7 +3,10 @@
 <template>
 <div>
   <h1>Servicos</h1>
-  <p>Nosses servicos/produtos</p>
+  <ul>
+    <li>Front end</li>
+    <li>UX/UI Design</li>
+  </ul>
 </div>
 
 </template>

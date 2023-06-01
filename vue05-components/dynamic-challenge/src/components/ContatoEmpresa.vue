@@ -3,7 +3,14 @@
 <template>
 <div>
   <h1>Contato</h1>
-  <input type="text">
+  <div>
+    <label for="nome">Nome: </label>
+    <input type="text">
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input type="text">
+  </div>
 </div>
 
 </template>

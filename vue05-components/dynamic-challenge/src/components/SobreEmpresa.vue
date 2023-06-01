@@ -3,7 +3,7 @@
 <template>
 <div>
   <h1>Sobre Empresa</h1>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+  <p>Empresa pioneira no desenvolvimento de novos desenvolvedores</p>
 </div>
 
 </template>
