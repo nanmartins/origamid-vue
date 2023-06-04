@@ -1,7 +1,7 @@
 <template>
   <div>
     <button @click="ativo = !ativo">Cadastre-se</button>
-    <transition name='modal'>
+    <transition name='modal' :duration="500">
       <div class="modal-container" v-if="ativo" @click="fecharModal">
         <div class="modal">
           <h1>Cadastre-se</h1>
@@ -98,12 +98,29 @@ export default {
   }
 
   .modal-enter-active, .modal-leave-active {
-    transition: opacity 1s;
+    transition: opacity 0.5s;
   }
 
   .modal-enter, .modal-leave-to {
     opacity: 0;
-    /* transform: translate3d(0, -200px, 0); */
+  }
+
+  .modal-enter-to .modal {
+    animation: slide 0.5s;
+  }
+
+  .modal-leave-to .modal {
+    animation: slide 0.5s reverse;
+  }
+
+
+  @keyframes slide {
+    from {
+      transform: translate3d(0, -60px, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
   }
 
 
