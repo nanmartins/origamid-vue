@@ -52,6 +52,7 @@ export default {
 
   h1 {
     margin: 0 0 20px 0;
+    text-align: center;
   }
 
   .modal-container {
