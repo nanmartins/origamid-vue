@@ -10,26 +10,24 @@
     </nav>
 
     <router-view></router-view>
-
   </div>
 </template>
 
 <script>
-
-
 export default {
-  name: 'App',
+  name: "App",
   methods: {
     mostrarRouter() {
-      console.log(this.$router)
-    }
-  }
-}
+      console.log(this.$router);
+    },
+  },
+};
 </script>
 
 <style>
-
-*, html, body {
+*,
+html,
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -69,11 +67,14 @@ a {
 }
 
 h1 {
-  color: white;
+  color: rgb(159, 159, 159);
+}
+
+p {
+  color: rgb(159, 159, 159);
 }
 
 .router-link-exact-active {
   color: coral;
 }
-
 </style>
