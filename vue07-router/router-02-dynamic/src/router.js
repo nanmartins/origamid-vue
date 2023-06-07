@@ -28,6 +28,7 @@ export default new Router({
         {
           path: ':curso',
           name: 'curso',
+          props: true,
           component: Curso,
           children: [
             {
