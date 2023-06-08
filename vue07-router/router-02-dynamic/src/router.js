@@ -33,10 +33,13 @@ export default new Router({
           children: [
             {
               path: 'aulas',
+              name: 'aulas',
+              props: true,
               component: CursoAulas
             },
             {
               path: 'descricao',
+              name: 'descricao',
               component: CursoDescricao
             }
           ]

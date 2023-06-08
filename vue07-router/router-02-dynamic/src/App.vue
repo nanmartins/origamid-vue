@@ -61,6 +61,13 @@ nav {
   gap: 20px;
 }
 
+.curso-nav-link {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
 a {
   text-decoration: none;
   color: rgb(159, 159, 159);

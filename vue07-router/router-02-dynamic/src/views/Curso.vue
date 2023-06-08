@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1 class="curso-title">{{ curso }}</h1>
+    <div class="curso-nav-link">
+      <router-link :to="`/cursos/${curso}/aulas`">Aulas</router-link>
+      <router-link :to="{name: 'descricao'}">Descricao</router-link>
+    </div>
+
     <router-view></router-view>
     <!-- <ul>
       <li>{{ curso }} - Aula 01</li>

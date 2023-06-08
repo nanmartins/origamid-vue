@@ -4,7 +4,8 @@
       <div class="cursos-list">
         <router-link to="/cursos/html">HTML</router-link>
         <router-link to="/cursos/css">CSS</router-link>
-        <router-link to="/cursos/javascript">JavaScript</router-link>
+        <!-- usando name para criar route-link no lugar do path -->
+        <router-link :to="{name: 'curso', params: { curso: 'javascript' }}">JavaScript</router-link>
         <router-link to="/cursos/vue.js">Vue.JS</router-link>
       </div>
 
