@@ -21,6 +21,27 @@
 export default {
   name: "Curso",
   props: ["curso"],
+  methods: {
+    puxarDados() {
+      console.log('puxei api')
+    }
+  },
+  beforeRouteEnter(to, from, next) {
+    // this.puxarDados()
+    next((vm) => {
+      vm.puxarDados()
+    })
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.puxarDados()
+    next()
+  },
+  beforeRouteLeave(to, from, next) {
+    const confirmar = confirm('Voce deseja sair?')
+    if (confirmar) {
+      next()
+    }
+  }
 };
 </script>
 

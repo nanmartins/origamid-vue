@@ -24,6 +24,10 @@ export default new Router({
       component: Cursos,
       //props sempre precisa ser registrado no elemento pai
       props: true,
+      // beforeEnter: (from, to, next) => {
+      //   console.log('Foi para cursos')
+      //   next()
+      // },
       children: [
         {
           path: ':curso',
