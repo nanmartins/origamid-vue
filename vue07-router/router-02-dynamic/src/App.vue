@@ -8,8 +8,9 @@
         <!-- <router-link to="/cursos/javascript">JavaScript</router-link> -->
       </div>
     </nav>
-
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -84,4 +85,14 @@ p {
 .router-link-exact-active {
   color: coral;
 }
+
+.v-enter, .v-leave-to {
+  transform: translate3d(-30px, 0, 0);
+  opacity: 0;
+}
+
+.v-enter-active, .v-leave-active {
+  transition: all 0.3s;
+}
+
 </style>

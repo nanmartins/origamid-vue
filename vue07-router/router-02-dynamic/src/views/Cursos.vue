@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="page-title">Curso <span>{{ curso }}</span></h1>
+    <h1 class="page-title">Curso ativo: <span>{{ curso }}</span></h1>
       <div class="cursos-list">
         <router-link to="/cursos/html">HTML</router-link>
         <router-link to="/cursos/css">CSS</router-link>
@@ -9,7 +9,9 @@
         <router-link to="/cursos/vue.js">Vue.JS</router-link>
       </div>
 
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view :key="curso"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -46,4 +48,5 @@ export default {
 span {
   text-transform: capitalize;
 }
+
 </style>

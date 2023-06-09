@@ -6,7 +6,10 @@
       <router-link :to="{name: 'descricao'}">Descricao</router-link>
     </div>
 
-    <router-view></router-view>
+
+    <transition mode="out-in" name="topDown">
+      <router-view :key="curso"></router-view>
+    </transition>
     <!-- <ul>
       <li>{{ curso }} - Aula 01</li>
       <li>{{ curso }} - Aula 02</li>
@@ -55,4 +58,16 @@ li {
   color: rgb(159, 159, 159);
   text-transform: capitalize;
 }
+
+.topDown-enter,
+.topDown-leave-to {
+  transform: translate3d(0, -30px, 0);
+  opacity: 0;
+}
+
+.topDown-enter-active,
+.topDown-leave-active {
+  transition: all 0.3s;
+}
+
 </style>
