@@ -25,6 +25,7 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 nav {
@@ -33,6 +34,17 @@ nav {
   align-items: center;
   padding: 0 30px;
   background: silver;
+}
+
+a {
+  text-decoration: none;
+  /* font-weight: bold; */
+  color: black;
+  font-size: 20px;
+}
+
+.router-link-exact-active {
+  color: rgb(0, 182, 100);
 }
 
 .nav-links {

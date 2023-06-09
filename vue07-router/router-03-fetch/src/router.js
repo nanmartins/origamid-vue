@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from './views/Home'
 import Acoes from './views/Acoes'
+import AcaoDados from './views/AcaoDados'
 
 Vue.use(Router)
 
@@ -18,7 +19,14 @@ export default new Router({
     {
       path: '/acoes',
       name: 'acoes',
-      component: Acoes
+      component: Acoes,
+      children: [
+        {
+          path: ':simbolo',
+          component: AcaoDados,
+          props: true
+        }
+      ]
     }
   ]
 })
