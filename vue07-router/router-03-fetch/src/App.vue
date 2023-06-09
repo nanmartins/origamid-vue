@@ -7,9 +7,10 @@
         <router-link to="/acoes">Açoes</router-link>
       </div>
     </nav>
-    <transition mode="out-in">
+    <!-- <transition mode="out-in"> -->
       <router-view></router-view>
-    </transition>
+      <router-view name="sidebar"></router-view>
+    <!-- </transition> -->
   </div>
 </template>
 

@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Home from './views/Home'
-import Acoes from './views/Acoes'
-import AcaoDados from './views/AcaoDados'
+// import Home from './views/Home'
+const Home = () => import('./views/Home')
+// import Acoes from './views/Acoes'
+const Acoes = () => import(/* webpackChunkName: "acoes" */ './views/Acoes')
+// import AcaoDados from './views/AcaoDados'
+const AcaoDados = () => import(/* webpackChunkName: "acoes" */ './views/AcaoDados')
 
 Vue.use(Router)
 
@@ -14,12 +17,26 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      components: {
+        default: Home,
+        sidebar: Acoes
+      }
+    },
+    // {
+    //   path: '/origamid',
+    //   redirect: '/'
+    // },
+    {
+      path: '*',
+      redirect: '/'
     },
     {
       path: '/acoes',
       name: 'acoes',
-      component: Acoes,
+      components: {
+        default: Acoes,
+        sidebar: Home,
+      },
       children: [
         {
           path: ':simbolo',
@@ -28,5 +45,12 @@ export default new Router({
         }
       ]
     }
-  ]
+  ],
+  scrollBehavior() {
+    // return {
+    //   x: 0,
+    //   y: 0
+    // }
+    return window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 })
