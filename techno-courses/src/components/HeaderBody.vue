@@ -1,21 +1,19 @@
 <template>
   <header>
-    <h1>
       <nav>
-        <div class="logo-div">
-          <router-link to="/" class="logo">Techno</router-link>
+        <div class="logo">
+          <router-link to="/">Techno</router-link>
         </div>
 
-        <ul class="nav-links">
-          <li>
-            <router-link to="/contato">Contato</router-link>
-          </li>
+        <ul>
           <li>
             <router-link to="/Cursos">Cursos</router-link>
           </li>
+          <li>
+            <router-link to="/contato">Contato</router-link>
+          </li>
         </ul>
       </nav>
-    </h1>
   </header>
 </template>
 
@@ -25,22 +23,49 @@ export default {
 };
 </script>
 
-<style>
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: silver;
+<style scoped>
+header {
+  background: #234;
 }
 
-.nav-links {
+header a {
+  color: white;
+}
+
+nav {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  max-width: 800px;
+  align-content: space-between;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .logo {
-  font-size: 26px;
+  flex: 1;
 }
+
+a.router-link-active {
+  color: #4b8;
+}
+
+.logo a {
+  font-size: 1.6rem;
+  color: white;
+}
+
+
+ul {
+  display: flex;
+  align-items: center;
+}
+
+ul li {
+  display: inline-block;
+}
+
+li a {
+  padding: 0 10px;
+  margin-left: 10px;
+}
+
 </style>

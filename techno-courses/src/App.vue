@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <HeaderBody />
-    <router-view></router-view>
+    <router-view class="container"></router-view>
   </div>
 </template>
 
@@ -17,11 +17,6 @@ export default {
 </script>
 
 <style>
-*,
-html {
-  margin: 0;
-  padding: 0;
-}
 
 body {
   font-family: sans-serif;
@@ -41,5 +36,11 @@ a {
   text-decoration: none;
   color: #234;
   font-size: 16px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 </style>
