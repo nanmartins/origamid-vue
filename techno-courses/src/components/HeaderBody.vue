@@ -2,11 +2,11 @@
   <header>
     <h1>
       <nav>
-        <div class="logo">
-          <router-link to="/">Techno</router-link>
+        <div class="logo-div">
+          <router-link to="/" class="logo">Techno</router-link>
         </div>
 
-        <ul>
+        <ul class="nav-links">
           <li>
             <router-link to="/contato">Contato</router-link>
           </li>
@@ -21,10 +21,26 @@
 
 <script>
 export default {
-  name: 'HeaderBody',
-}
+  name: "HeaderBody",
+};
 </script>
 
 <style>
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: silver;
+}
 
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 26px;
+}
 </style>
