@@ -1,12 +1,29 @@
 <template>
   <div>
     <div v-if="loading">
-      <p>Carregando...</p>
+      <PageLoading />
     </div>
-    <div>
-      <h1>Contato</h1>
-      <p>{{ api }}</p>
-    </div>
+
+    <transition>
+      <div v-if="api">
+        <h1>{{ api.titulo }}</h1>
+        <h4>{{ api.descricao }}</h4>
+        <ul>
+          <li>
+            <b>Email: </b>
+            {{ api.contato.email }}
+          </li>
+          <li>
+            <b>Telefone: </b>
+            {{ api.contato.telefone }}
+          </li>
+          <li>
+            <b>Endereço: </b>
+            {{ api.contato.endereco }}
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -17,26 +34,16 @@ import fetchData from '@/mixins/fetchData'
 export default {
   name: 'Contato',
   mixins: [fetchData],
-  // data() {
-  //   return {
-  //     api: null
-  //   }
-  // },
-  // methods: {
-  //   fetchData() {
-  //     fetch('http://localhost:3000/contato')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       this.api = data
-  //     })
-  //   }
-  // },
   created() {
     this.fetchData('/contato')
   }
 }
 </script>
 
-<style>
+<style scoped>
 
+ul li {
+  gap: 10px;
+  margin-top: 5px;
+}
 </style>

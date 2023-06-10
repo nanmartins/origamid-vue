@@ -13,8 +13,10 @@ export default {
       fetch(`http://localhost:3000${url}`)
       .then(response => response.json())
       .then(data => {
-        this.api = data
-        this.loading = false
+        setTimeout(() => {
+          this.api = data
+          this.loading = false
+        }, 1000);
       })
     }
   }
