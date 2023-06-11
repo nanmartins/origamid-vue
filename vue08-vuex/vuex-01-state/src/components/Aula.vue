@@ -7,7 +7,7 @@
     <br>
     <button @click="handleClick">Mudar usuario</button>
     <br>
-    <button @click="completarAula">Completar Aula</button>
+    <button @click="completar">Completar Aula</button>
 
     <hr>
 
@@ -17,7 +17,7 @@
 
 <script>
 
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 
 export default {
@@ -32,21 +32,26 @@ export default {
     ...mapState(["user", "aulasCompletas"]),
   },
   methods: {
-    mostrarConsole() {
-      console.log(this.user, this.aulasCompletas)
-    },
+    ...mapMutations(['CHANGE_USER', 'COMPLETAR_AULA']),
     handleClick() {
-      this.$store.commit('changeUser', {
+      // this.$store.commit('changeUser', {
+      //   user: this.novoUser,
+      //   totalAulas: this.totalAulas
+      // })
+      this.CHANGE_USER({
         user: this.novoUser,
         totalAulas: this.totalAulas
       })
     },
-    completarAula() {
+    completar() {
       if (this.totalAulas > 0) {
         this.totalAulas--
-        this.$store.commit('completarAula')
+        this.COMPLETAR_AULA('COMPLETAR_AULA')
       }
-    }
+    },
+    mostrarConsole() {
+      console.log(this.user, this.aulasCompletas)
+    },
   }
 }
 </script>

@@ -9,11 +9,11 @@ export default new Vuex.Store({
     aulasCompletas: 10
   },
   mutations: {
-    changeUser(state, payload) {
+    CHANGE_USER(state, payload) {
       state.user = payload.user
       console.log(payload.totalAulas)
     },
-    completarAula(state) {
+    COMPLETAR_AULA(state) {
       state.aulasCompletas++
     }
   }
