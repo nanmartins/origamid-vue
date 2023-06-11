@@ -28,9 +28,15 @@ header {
   background: #234;
 }
 
+
 header a {
   color: white;
 }
+
+header a.router-link-active {
+  color: #4b8;
+}
+
 
 nav {
   display: flex;
@@ -44,13 +50,10 @@ nav {
   flex: 1;
 }
 
-a.router-link-active {
-  color: #4b8;
-}
 
 .logo a {
   font-size: 1.6rem;
-  color: white;
+  color: white !important;
 }
 
 
