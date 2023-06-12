@@ -26,13 +26,14 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    AULA_CONCLUIDA(state, index) {
-      // Remove o item da aulasLista
-      state.aulasLista.splice(index, 0)
-    },
-    CONCLUSAO_LOGICA(state, index) {
+    AULA_CONCLUIDA(state, payload) {
       // Adiciona o item em listaDeConcluidas
-      state.listaDeConcluidas.push(index)
+      state.listaDeConcluidas.push(payload)
+    }
+  },
+  actions: {
+    completarAula(context, payload) {
+      context.commit("AULA_CONCLUIDA", payload)
     }
   }
 })
