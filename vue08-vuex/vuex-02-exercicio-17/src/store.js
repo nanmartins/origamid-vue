@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     aulaConcluida: false,
+    acao: null,
     listaDeConcluidas: [
 
     ],
@@ -29,11 +30,21 @@ export default new Vuex.Store({
     AULA_CONCLUIDA(state, payload) {
       // Adiciona o item em listaDeConcluidas
       state.listaDeConcluidas.push(payload)
+    },
+    ATUALIZAR_ACAO(state, payload) {
+      state.acao = payload
     }
   },
   actions: {
     completarAula(context, payload) {
       context.commit("AULA_CONCLUIDA", payload)
+    },
+    puxarAcao(context) {
+      fetch('https://api.origamid.dev/stock/aapl/quote')
+      .then(response => response.json())
+      .then(data => {
+        context.commit('ATUALIZAR_ACAO', data)
+      })
     }
   }
 })

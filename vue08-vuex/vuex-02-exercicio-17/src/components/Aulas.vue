@@ -24,14 +24,8 @@ export default {
     handleClick(aula) {
       this.$store.dispatch("completarAula", aula);
       this.aulasLista.splice(aula, 1);
-    },
-    // concluirAula(index) {
-    //   // Chama a mutação AULA_CONCLUIDA para adicionar o item em listaDeConcluidas
-    //   this.AULA_CONCLUIDA(this.aulasLista[index]);
-    //   // Remove o item da array inicial
-    // this.aulasLista.splice(index, 1);
-    // },
-  },
+    }
+  }
 };
 </script>
 
