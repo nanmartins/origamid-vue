@@ -15,6 +15,12 @@ export default {
 
 <style scoped>
 
+.loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
 .loading span {
   display: inline-block;
   width: 10px;
